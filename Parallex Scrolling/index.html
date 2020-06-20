@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parallex Scrolling</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="first">
+		<img src="./images/bg.jpg" id="bg">
+		<img src="./images/moon.png" id="moon">
+		<img src="./images/mountain.png" id="mountain">
+		<img src="./images/road.png" id="road">
+		<h2 id="text">WELCOME</h2>	
+	</section>
+	<section class="banner" id="sec">
+		<header>
+			<p href="#" class="logo">Logo</p>
+			<div id="toggle" onclick="toggle()"></div>
+		</header>
+		<div class="content" id="test">
+			<h2>Hello there,<br>I'm <b>Urvesh Vernekar</b></h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+			<!-- <a href="#">Know More</a><br><br> -->
+			<a class="btn" href="#">Know More</a>
+		</div>
+		<ul class="sci" id="me">
+			<li><a href="#"><img src="./images/facebook.png"></a></li>
+			<li><a href="#"><img src="./images/twitter.png"></a></li>
+			<li><a href="#"><img src="./images/linkedin.png"></a></li>
+		</ul>
+	</section>
+	<div id="navigation">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<br>
+			<li><a href="#">About</a></li>
+			<br>
+			<li><a href="#">Services</a></li>
+			<br>
+			<li><a href="#">Portfolio</a></li>
+			<br>			
+			<li><a href="#">Contact Me</a></li>
+		</ul>
+	</div>
+	<form name="testing">
+		<input type="hidden" name="t1" value="0">
+	</form>
+	
+	<script type="text/javascript">
+		function toggle() {
+			t1 = Number(document.testing.t1.value);
+			var sec = document.getElementById('sec');
+			var nav = document.getElementById('navigation');
+			var me = document.getElementById('me');
+			var tog = document.getElementById('toggle');
+			sec.classList.toggle('active');
+			nav.classList.toggle('active');
+			if (t1 == 0) {
+				tog.style = "transition:0.5s; transform:translateX(-250px);";
+				me.style = "transition:0.5s; transform:translateX(-250px);";
+				document.testing.t1.value = 1;
+			} 
+			if (t1 == 1) {
+				tog.style = "transition:0.5s; transform:translateX(0);";
+				me.style = "transition:0.5s; transform:translateX(0);";
+				document.testing.t1.value = 0;
+			}
+		}
+
+		let bg = document.getElementById("bg");
+		let moon = document.getElementById("moon");
+		let mountain = document.getElementById("mountain");
+		let road = document.getElementById("road");
+		let text = document.getElementById("text");
+
+		window.addEventListener('scroll', function() {
+			var value = window.scrollY;
+
+			bg.style.top = value * 0.5 + 'px';
+			moon.style.left = -value * 0.5 + 'px';
+			mountain.style.top = -value * 0.15 + 'px';
+			road.style.top = value * 0.15 + 'px';
+			text.style.top = value * 1 + 'px';
+		})
+	</script>
+</body>
+</html>
